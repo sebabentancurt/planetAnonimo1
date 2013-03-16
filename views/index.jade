@@ -1,5 +1,57 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+  body
+    #global
+      header
+        #headerCenter
+          #logo
+          #searchDiv
+            input#searchInput(type='text', placeholder='Busca un usuario')
+          input.entrar(type='button', name='login', value='Logueate!')
+          #sign_box
+            form(method='post')
+              label.loginLabel
+                | Usuario
+                input.loginInput(type='text', name='usr')
+              label.loginLabel
+                | Contraseña
+                input.loginInput(type='password', name='pwd')
+              #iniciarSesionDiv
+                input.iniciarSesion(type='submit', value=' Iniciar Sesion ')
+      nav
+        h3#registrate Registrate!
+        .o -Conecta con-
+        #registroExterno
+          #facebook(onclick='location.href=\'http://www.planetanonimo.eshost.es/\'')
+          #twitter(onclick='location.href=\'http://www.planetanonimo.eshost.es/\'')
+        .o
+          | -o-
+        form(name='registro')
+          table#registro
+            tr
+              td#registroTd(colspan='100') Introduce tus datos
+            tr
+              td
+                | Usuario
+              td
+                input.registro(type='text', name='user', required='required')
+            tr
+              td
+                | Contraseña
+              td
+                input.registro(type='password', name='pass', required='required')
+            tr
+              td
+                | Email
+              td
+                input.registro(type='email', name='email', required='required')
+            tr
+              td
+                input.registro(type='button', value='Registrate')
+      #contenido
+        hr
+        section
+          article
+            | Preguntas, llamadas y videochats anonimos!
