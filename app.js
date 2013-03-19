@@ -2,11 +2,9 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
-  , pagina = require('./routes/pagina')
   , http = require('http')
   , path = require('path');
 
@@ -32,8 +30,11 @@ app.configure('development', function(){
 // Rutas
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/pagina', pagina.pagina);
+app.get('/pagina', routes.pagina);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+

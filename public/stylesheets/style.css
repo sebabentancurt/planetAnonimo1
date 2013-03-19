@@ -80,7 +80,6 @@ div#searchDiv{
     margin-right: auto;
     margin-left: auto;
    
-    
 }
 input.entrar{
 		text-align: center;
@@ -107,6 +106,7 @@ input.entrar:active {
 input.entrar:hover{
 		background-color:#D6FAFF;
        cursor: pointer;
+       
 }
 div#sign_box
 {
@@ -126,8 +126,7 @@ div#sign_box
 		border: 10px solid rgba(0, 0, 0, .5);
 		-webkit-background-clip: padding-box; /* for Safari */
 		background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-        
-        
+         
 }
 
 input.loginInput{
@@ -275,7 +274,6 @@ footer{
     width:100%;
 	height: 45px;
 	display:block;
-    
     padding: 0;
     margin: 0;
 }
