@@ -10,7 +10,7 @@
     "express": "*",
     "jade": "*",
     "mongoose": "*",
-    "mysql": "*",
+    "stylus": "*",
     "socket.io": "*"
   },
   
