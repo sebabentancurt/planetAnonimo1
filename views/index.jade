@@ -3,58 +3,57 @@ extends layout
 
 block content
 
-
   body
-    #global
-      header
-        #headerCenter
-          #logo
-          #searchDiv
-            input#searchInput(type='text', placeholder='Busca un usuario')
-          input.entrar(type='button', name='login', value='Logueate!')
-          #sign_box
-            form(method='post')
-              label.loginLabel
-                | Usuario
-                input.loginInput(type='text', name='usr', required='required')
-              label.loginLabel
-                | Contraseña
-                input.loginInput(type='password', name='pwd', required='required')
-              #iniciarSesionDiv
-                input.inicioSubmit(type='submit', value=' Iniciar Sesion ')
-      nav
-        h3#registrate Registrate!
-        .o -Conecta con-
-        #registroExterno
-          #facebook(onclick='location.href=\'http://www.planetanonimo.eshost.es/\'')
-          #twitter(onclick='location.href=\'http://www.planetanonimo.eshost.es/\'')
-        .o
-          | -o-
-        form(method='post')
-          table#registro
-            tr
-              td#registroTd(colspan='100') Introduce tus datos
-            tr
-              td
-                | Usuario
-              td
-                input.registro(type='text', name='user', required='required', required title="El nombre es necesario para registrarse")
-            tr
-              td
-                | Contraseña
-              td
-                input.registro(type='password', name='pass', required='required', required title="Una contraseña es necesaria para el registro" )
-            tr
-              td
-                | Email
-              td
-                input.registro(type='email', name='email', required='required', required title="El email es necesario para registrarse")
-            tr 
-              td.submit(colspan='100')
-               input.registroSubmit(type='submit', value='Registrate', name='submit')
-               
-      #contenido
-        hr
-        section
-          article
-            | Preguntas, llamadas y videochats anonimos!
+   #global
+     header
+       #headerCenter
+         #logo
+         #searchDiv
+           input#searchInput(type='text', placeholder='Busca un usuario')
+         input.entrar(type='button', name='login', value='Logueate!')
+         #sign_box
+           form(method='post')
+             label.loginLabel
+               | Usuario
+               input.loginInput(type='text', name='loginUser', required='required')
+             label.loginLabel
+               | Contraseña
+               input.loginInput(type='password', name='loginPass', required='required')
+             #iniciarSesionDiv
+               input.inicioSubmit(type='submit', value=' Iniciar Sesion ')
+     nav
+       h3#registrate Registrate!
+       .o -Conecta con-
+       #registroExterno
+         #facebook(onclick='location.href=\'http://www.planetanonimo.eshost.es/\'')
+         #twitter(onclick='location.href=\'http://www.planetanonimo.eshost.es/\'')
+       .o
+         | -o-
+       form(action="/inicio", method='post')
+         table#registro
+           tr
+             td#registroTd(colspan='100') Introduce tus datos
+           tr
+             td
+               | Usuario
+             td
+               input.registro(type='text', name='registroUser', required='required', required title="El nombre es necesario para registrarse")
+           tr
+             td
+               | Contraseña
+             td
+               input.registro(type='password', name='registroPass', required='required', required title="Una contraseña es necesaria para el registro" )
+           tr
+             td
+               | Email
+             td
+               input.registro(type='email', name='registroEmail', required='required', required title="El email es necesario para registrarse")
+           tr 
+             td.submit(colspan='100')
+              input.registroSubmit(type='submit', value='Registrate', name='submit')
+              
+     #contenido
+       hr
+       section
+         article
+           | Preguntas, llamadas y videochats anonimos!
