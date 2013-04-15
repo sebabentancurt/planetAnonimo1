@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 var express = require('express')
-  , routes = require('./routes')
+  , routes = require('./routes/index')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
@@ -11,27 +11,28 @@ var express = require('express')
 
 var app = express();
 
-
-
 //Conecto a MongoDB con connect
-mongoose.connect('mongodb://sebabentancurt:seba5641456414@ds035237.mongolab.com:35237/af_planetanonimo-sebabentancurt'); 
+//mongoose.connect('mongodb://sebabentancurt:seba5641456414@ds035237.mongolab.com:35237/af_planetanonimo-sebabentancurt'); 
+mongoose.connect('mongodb://localhost/planetAnonimo'); 
 
 // Configuracion
-app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
-  
-  //Cookies session
-   app.use(express.bodyParser());
-  app.use(express.cookieParser('nhispano'));
-  app.use(express.session({secret: 'SECRET' }));
+app.configure(function () {
+    app.set('port', 3000);
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
+    app.use(express.favicon());
+    app.use(express.logger('dev'));
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(app.router);
+
+    //Cookies session
+    app.use(express.cookieParser());
+    app.use(express.session({secret:'Secret'}));
+    
+    app.use(require('stylus').middleware(__dirname + '/public'));
+    app.use(express.static(path.join(__dirname, 'public')));
+
 });
 
 app.configure('development', function(){
@@ -42,6 +43,13 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/pagina', routes.pagina);
+app.get('/registro', routes.registro);
+
+//Errores
+app.get('/500', routes.error500);
+//app.get('/*', routes.error404);
+
+
 
 //Ejecutar servidor express
 http.createServer(app).listen(app.get('port'), function(){
@@ -69,27 +77,30 @@ var schema = mongoose.Schema({  name: 'string'
 var usuarios = mongoose.model('usuarios', schema);
 
 //Obtencion datos POST
-app.post('/inicio', function(request, response){
-var user = new usuarios({ name: ''
-                         ,pass: request.body.registroPass
-                         ,email: request.body.registroEmail
-                         ,username: request.body.registroUser
-                         ,fecha: {nacimiento:null ,altas: new Date(Date.now()) , bajas: null}
-                         ,localidad: {ciudad: null, pais: null, paisGeo:null}
-                         ,activo: true
-                         ,pregunta: null
-                         ,comentario: null
-                         ,slogan: null
-                         ,foto: null
-                         ,genero: null
-                         ,faceLogin: 'no'
-                         ,twitLogin: 'no'
-                         ,faceRegistro: false
-                         ,twitRegistro: false
-                         });
-user.save(function (err) {
-  if (err) // ...
-  console.log('meow');
+app.post('/registro', function (req, res) {
+    var user = new usuarios({ name: ''
+                         , pass: req.body.registroPass
+                         , email: req.body.registroEmail
+                         , username: req.body.registroUser
+                         , fecha: { nacimiento: null, altas: new Date(Date.now()), bajas: null }
+                         , localidad: { ciudad: null, pais: null, paisGeo: null }
+                         , activo: false
+                         , pregunta: null
+                         , comentario: null
+                         , slogan: null
+                         , foto: null
+                         , genero: null
+                         , faceLogin: null
+                         , twitLogin: null
+                         , faceRegistro: false
+                         , twitRegistro: false
+    });
+    
+    user.save(function (err) {
+        if (err) // ...
+            console.log('meow');
+    });
+    
+    res.render('registro', {user:'undefined'});
 });
-
-});
+//Retornar sesion para jade
