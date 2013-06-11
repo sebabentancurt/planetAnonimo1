@@ -1,11 +1,10 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
+  "name": "planetAnonimo",
+  "version": "0.0.1-1",
+  "private": false,
   "scripts": {
     "start": "node app"
   },
-  
   "dependencies": {
     "express": "*",
     "jade": "*",
@@ -13,9 +12,9 @@
     "stylus": "*",
     "socket.io": "*"
   },
-  
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/sebabentancurt/planetAnonimo.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebabentancurt/planetAnonimo.git"
   }
+  
 }

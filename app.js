@@ -12,12 +12,12 @@ var express = require('express')
 var app = express();
 
 //Conecto a MongoDB con connect
-//mongoose.connect('mongodb://sebabentancurt:seba5641456414@ds035237.mongolab.com:35237/af_planetanonimo-sebabentancurt'); 
+//mongoose.connect('mongodb://sebabentancurt:sebabentancurt1996@linus.mongohq.com:10006/planetanonimo_sebabentancurt'); 
 mongoose.connect('mongodb://localhost/planetAnonimo'); 
 
 // Configuracion
 app.configure(function () {
-    app.set('port', 3000);
+    app.set('port', process.env.PORT || 8000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.use(express.favicon());

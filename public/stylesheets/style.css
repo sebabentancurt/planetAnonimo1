@@ -132,6 +132,7 @@ input.loginInput:focus {
 label.loginLabel {
   color: #174c5b;
   margin-left: 5px;
+  width: 100%;
 }
 div#iniciarSesionDiv {
   height: auto;

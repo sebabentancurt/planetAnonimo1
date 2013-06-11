@@ -1,0 +1,16 @@
+157 error Error: read ECONNRESET
+157 error     at errnoException (net.js:863:11)
+157 error     at TCP.onread (net.js:524:19)
+158 error If you need help, you may report this log at:
+158 error     <http://github.com/isaacs/npm/issues>
+158 error or email it to:
+158 error     <npm-@googlegroups.com>
+159 error System Windows_NT 6.1.7601
+160 error command "C:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "outdated" "express" "jade" "mongoose" "stylus" "socket.io"
+161 error cwd C:\Users\Bentancurt\Documents\My Web Sites\planetAnonimo
+162 error node -v v0.10.0
+163 error npm -v 1.2.14
+164 error syscall read
+165 error code ECONNRESET
+166 error errno ECONNRESET
+167 verbose exit [ 1, true ]
